@@ -664,26 +664,4 @@ map <silent> <leader>M :%s/<C-V><C-M>//<CR>
 " called
 set splitbelow
 set splitright
-
-" Function to open all the files I want/need in the phleb app thing
-function Guh()
-    :e index.php
-    :vsplit validate.php
-    :tabnew
-    :split
-    :vsplit
-    :vsplit
-    :wincmd k
-    :e javascript/user-menu.js
-    :vsplit javascript/inst-menu.js
-    :vsplit javascript/admin-menu.js
-    :tabnew class/ProgressReport.class.php
-    :vsplit class/DailyLog.class.php
-    :tabnew javascript/showAssignedUsers.js
-    :vsplit javascript/listProgressReports.js
-    :vsplit javascript/newProgressReport.js
-    :tabnew css/main.css
-    :tabfirst
-endfunction
-
 " }}}
