@@ -1,0 +1,54 @@
+! General
+!urxvt*termName:         rxvt-256color
+*scrollBar:        off
+*secondaryScroll:  true
+*savelines:        65535
+*cursorBlink:      false
+
+Xcursor.theme: Vanilla-DMZ
+!Xcursor.size: 16
+
+! Extensions
+*perl-lib:         /usr/lib/urxvt/perl
+*perl-ext-common:  default,matcher
+*urlLauncher:      /usr/bin/chromium
+*matcher.button:   1
+
+! Appearance
+!*font:              xft:Terminus:pixelsize=9:antialias=true:hinting=true
+!*boldFont:          xft:Terminus:bold:pixelsize=9:antialias=true:bold:hinting=true
+*font:              -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*
+*boldFont:          -*-terminus-bold-r-*-*-12-*-*-*-*-*-*-* 
+*italicFont:        -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-* 
+*boldItalicFont:    -*-terminus-bold-r-*-*-12-*-*-*-*-*-*-* 
+!*font:              -*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*
+!*boldFont:          -*-terminus-bold-*-*-*-12-*-*-*-*-*-*-* 
+!*italicFont:        xft:Terminus:italic:pixelsize=9:antialias=true:italic:hinting=true
+!*boldItalicFont:    xft:Terminus:bold:italic:pixelsize=9:antialias=true:bold:italic:hinting=true
+! color scheme
+*background: #101010
+*foreground: Green
+! based on molokai colors for vim
+*color0:    #1b1d1e
+*color8:    #505354
+!red
+*color1:    #f92672
+*color9:    #ff5995
+!green
+*color2:    #82b414
+*color10:   #b6e354
+!yellow
+*color3:    #fd971f
+*color11:   #feed6c
+!blue
+*color4:    #56c2d6
+*color12:   #8cedff
+!magenta
+*color5:    #8c54fe
+*color13:   #9e6ffe
+!cyan
+*color6:    #465457
+*color14:   #899ca1
+!white
+*color7:    #ccccc6
+*color15:   #f8f8f2
