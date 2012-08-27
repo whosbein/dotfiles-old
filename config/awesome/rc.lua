@@ -74,8 +74,8 @@ layouts =
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
-tags = { names = { "1", "2", "3", "4", "5", "6" },
-        layouts = { layouts[2], layouts[2], layouts[2], layouts[2], layouts[1], layouts[1] }
+tags = { names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" },
+        layouts = { layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[2], layouts[1] }
     }
 for s = 1, screen.count() do
     tags[s] = awful.tag(tags.names, s, tags.layouts)
@@ -192,8 +192,9 @@ calinfo_t = awful.tooltip({objects = { calicon},})
 -- Register widgets
 -- 9209 calendar
 function get_9209cal()
-    local io = io.popen("/home/whosbein/bin/pyscrape.py -d now -n 1 -s")
+    local io = io.popen("/home/whosbein/bin/pyscrape.py -d now -n 1")
     local str = io:read("*all")
+    str = (str:gsub("^%s*(.-)%s*$", "%1"))
     return str
 end
 calinfo_t:set_text(get_9209cal())
@@ -315,8 +316,8 @@ mytaglist.buttons = awful.util.table.join(
                     awful.button({ modkey }, 1, awful.client.movetotag),
                     awful.button({ }, 3, awful.tag.viewtoggle),
                     awful.button({ modkey }, 3, awful.client.toggletag),
-                    awful.button({ }, 4, awful.tag.viewnext),
-                    awful.button({ }, 5, awful.tag.viewprev)
+                    awful.button({ }, 5, awful.tag.viewnext),
+                    awful.button({ }, 4, awful.tag.viewprev)
                     )
 mytasklist = {}
 mytasklist.buttons = awful.util.table.join(
@@ -341,11 +342,11 @@ mytasklist.buttons = awful.util.table.join(
                                                   instance = awful.menu.clients({ width=250 })
                                               end
                                           end),
-                     awful.button({ }, 4, function ()
+                     awful.button({ }, 5, function ()
                                               awful.client.focus.byidx(1)
                                               if client.focus then client.focus:raise() end
                                           end),
-                     awful.button({ }, 5, function ()
+                     awful.button({ }, 4, function ()
                                               awful.client.focus.byidx(-1)
                                               if client.focus then client.focus:raise() end
                                           end))
@@ -439,8 +440,8 @@ end
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewprev),
-    awful.button({ }, 5, awful.tag.viewnext)
+    awful.button({ }, 5, awful.tag.viewprev),
+    awful.button({ }, 4, awful.tag.viewnext)
 ))
 -- }}}
 
@@ -590,15 +591,13 @@ awful.rules.rules = {
                      focus = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "Thunar" },
-      properties = { floating = true, tag = tags[1][5] } },
     { rule = { 
         class = "URxvt", 
         instance = "mocp" 
       },
       properties = { 
           floating = true, 
-          tag = tags[1][5] 
+          tag = tags[1][9] 
       },
       callback = function(c)
           local w_area = screen[ c.screen ].workarea
