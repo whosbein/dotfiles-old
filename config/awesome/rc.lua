@@ -107,7 +107,7 @@ bottombar = {}
 
 -- Generic Widgets
 -- Create a textclock widget
-mytextclock = awful.widget.textclock({ align = "right" }, "%a %b %d, %l:%M %p")
+mytextclock = awful.widget.textclock({ align = "right" }, "%a %b %d, %l:%M %p", 1)
 calendar2.addCalendarToWidget(mytextclock, '<span bgcolor="#f92672" font_weight="bold">%s</span>')
 
 mysystray = widget({ type = "systray" })
@@ -216,10 +216,13 @@ vicious.register(cpuinfo, vicious.widgets.cpu, -- "$2%")
 
         cpuinfo_t:set_text(string.sub(str, 1, -2))
         s:close()
-        return string.format('%s%% : %s%%', args[1], args[2])
+        -- single core
+        --return string.format('%s%% : %s%%', args[1], args[2])
+        -- quad core
+        return string.format('%s%% : %s%% %s%% %s%% %s%%', args[1], args[2], args[3], args[4], args[5])
     end)
 -- quad core
--- vicious.register(cpuinfo, vicious.widgets.cpu, "$2% $3% $4% $5%")
+--vicious.register(cpuinfo, vicious.widgets.cpu, "$2% $3% $4% $5%")
 -- vicious.register(netinfo, vicious.widgets.net, "${eth0 down_kb} ${eth0 up_kb}", 1)
 vicious.register(netinfo, vicious.widgets.net, 
     function (widget, args)
@@ -478,7 +481,7 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    -- awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+     --awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal .. " -e tmux") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
